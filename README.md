@@ -33,3 +33,20 @@ print(predictedprice)
 
 RESULT: 5,751,976 
 
+
+-- The coefficient is a factor that describes the relationship with an unknown variable. 
+-- Example: if x is a variable, then 5x is x five times. x is the unknown variable, and the number 5 is the coefficient.
+
+import pandas
+from sklearn import linear_model
+
+X = df[['area', 'bedrooms', 'bathrooms', 'stories', 'parking']]
+y = df['price']
+
+regr = linear_model.LinearRegression()
+regr.fit(X, y)
+
+print(regr.coef_)
+
+RESULT: [3.31115495e+02 1.67809788e+05 1.13374016e+06 5.47939810e+05
+ 3.77596289e+05]
