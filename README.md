@@ -2,24 +2,24 @@
 USING MACHINE LEARNING
 
 
------------ I am predicting the The PRICE OR SALES A THE AREA OF 5500, 2 BEDROOM, 2 BATHROOM, 2 STORIES AND 1 PARKING SPACE APARTMENT WOULD BE IN THE AREA -------
+-- I am predicting the The PRICE OR SALES of all possible houses in the given data --
 
+###### OBJECTIVES #######
 -- Understand the Dataset & cleanup (if required).
--- Build Regression models to predict the sales w.r.t a single & multiple feature
+-- Build Regression model to predict the sales w.r.t a single & multiple feature
 -- Also evaluate the model & it scores using R2.
 
 import pandas as pd
 from sklearn import linear_model
+import numpy as np
 df = pd.read_csv("Housing.csv")
 df
-import pandas as pd
-from sklearn import linear_model
-import numpy as np
+
 
 ## defining the y variable based on independencies.
 X = df[['area', 'bedrooms', 'bathrooms', 'stories', 'parking', 'mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea']]
 
-# create a dictionary to map 'yes' and 'no' to 1 and 0
+# create a dictionary to map 'yes' and 'no' to 1 and 0 respectively #
 binary_map = {'yes': 1, 'no': 0}
 
 # convert 'yes' to 1 and 'no' to 0 for the columns
@@ -37,14 +37,14 @@ y = df['price']
 regr = linear_model.LinearRegression()
 regr.fit(X, y)
 
-## inserting the call out into prdeictedprice as the targeted out to predict on.
+## inserting the call out into predictedprice as the targeted out to predict on.
 predictedprice = regr.predict([[5500, 2, 2, 2, 1, 1, 1, 0, 1, 0, 0]])
 print(predictedprice)
 
 RESULT: 6,245,060
 
 
--- To evaluate the model using R-squared, you need to first split the data into training and testing sets, fit the model on the training set, and then -- use it to make predictions on the test set. You can then calculate the R-squared value for the predictions and compare it to the R-squared value for a -- simple baseline model. Here's an example of how you can do this:
+-- To evaluate the model using R-squared, you need to first split the data into training and testing sets, fit the model on the training set, and then -- use it to make predictions on the test set. You can then calculate the R-squared value for the predictions and compare it to the R-squared value for a -- simple baseline model. 
 
 import pandas as pd
 from sklearn import linear_model
